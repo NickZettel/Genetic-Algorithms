@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cmath>
 
-
+//page 9 of An Introduction to Genetic Algorithms by Malanie Mitchell
 
 double fitnessFunction(double y){
     if (y<0 || y >= M_PI){
