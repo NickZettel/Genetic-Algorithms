@@ -3,11 +3,7 @@
 #include <ctime>
 #include <cmath>
 
-void modifyArray(int* arr, int size) {
-    for (int i = 0; i < size; ++i) {
-        arr[i] += 10; // Modify each element by adding 10
-    }
-}
+
 
 double fitnessFunction(double y){
     if (y<0 || y >= M_PI){
@@ -17,23 +13,47 @@ double fitnessFunction(double y){
 }
 
 
+//function does a lot of things. takes as argument the array holding solutions (assumed to be 10)
+void nextGen(double arr[]) {
+    //variables to keep track of current highest fitness
+    double highest = 0;
+    int highI;
+    //loop through solutions saving the index and fitness of fittest solution thus far
+    for (int i = 0; i < 10; ++i) {
+        if (fitnessFunction(arr[i]) > highest){
+            highI = i;
+            highest = fitnessFunction(arr[i]);
+        }
+    }
+    //turn non-fittest solutions into fittest solution + or - a few decimal points
+    for (int i = 0; i < 10; ++i) {
+        if (i != highI){
+            arr[i] = arr[highI] + ((double)rand() / RAND_MAX) * 0.2 - 0.1;
+
+        }
+    }
+    std::cout <<std::endl<<std::endl<< arr[highI] << "||| " <<highest<<std::endl;
+}
+
 int main() {
+
     srand((unsigned) time(NULL));
 
-    double lower = 0.0;
 
     double solutions[10];
 
     for (int i = 0; i < 10; i++) {
-        double random = lower + (double)rand() / RAND_MAX * (M_PI - lower);
+        double random = (double)rand() / RAND_MAX * M_PI;
         solutions[i] = random;
     }
 
-    for (int i = 0; i < 10; i++) {
-        std::cout<< solutions[i]<< " ||| "<< fitnessFunction(solutions[i]) << std::endl;
+
+    for(int i = 0; i< 2000; i++){
+        nextGen(solutions);
     }
 
     return 0;
 }
 
+//the answer it turns out is a y value of 3.09348 conferring a fitness value of 4.09299
 

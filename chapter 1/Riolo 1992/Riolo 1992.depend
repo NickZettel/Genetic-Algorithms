@@ -1,5 +1,7 @@
 # depslib dependency file v1.0
-1728916951 source:c:\users\nick\desktop\genetic algorithms\chapter 1\riolo 1992\main.cpp
+1728932037 source:c:\users\nick\desktop\genetic algorithms\chapter 1\riolo 1992\main.cpp
 	<iostream>
 	<cstdlib>
+	<ctime>
+	<cmath>
 
