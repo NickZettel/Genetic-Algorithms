@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1729042691 source:c:\users\nick\desktop\genetic algorithms\chapter 1\ex1\main.cpp
+	<iostream>
+	<ctime>
+	<cstdlib>
+
